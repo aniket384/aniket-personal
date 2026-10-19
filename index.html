@@ -339,8 +339,34 @@ footer .script{font-size:30px;color:var(--blush);display:block;margin-bottom:4px
 const CONFIG = {
   // Aniket's WhatsApp number with country code, digits only (e.g. "919876543210").
   // Leave empty and WhatsApp will open its contact picker instead.
-  whatsapp: "",
+  whatsapp: "918817084011",
+  // Silent notifications to Aniket when she answers
+  notifyEmail: "aniketmishra384@gmail.com",   // via FormSubmit (activate once from the first email)
+  callmebotPhone: "918817084011",              // WhatsApp via CallMeBot
+  callmebotKey: "",                            // paste the API key CallMeBot sends you
 };
+
+function notifyAniket(kind, choice){
+  const time = new Date().toLocaleString('en-IN',{timeZone:'Asia/Kolkata',dateStyle:'medium',timeStyle:'short'});
+  const summary = kind==='time' ? 'She needs a little time 🌸' : `She said YES to ${choice} 💖`;
+  try{
+    if(CONFIG.notifyEmail){
+      fetch('https://formsubmit.co/ajax/'+CONFIG.notifyEmail,{
+        method:'POST', keepalive:true,
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify({
+          _subject:'💌 Saniya answered: '+(kind==='time'?'needs time':choice),
+          _template:'table', _captcha:'false',
+          answer:summary, type:kind, choice:choice||'-', time:time
+        })
+      }).catch(()=>{});
+    }
+    if(CONFIG.callmebotPhone && CONFIG.callmebotKey){
+      const text=encodeURIComponent(`💌 Saniya answered on your website!\n${summary}\n🕒 ${time}`);
+      fetch(`https://api.callmebot.com/whatsapp.php?phone=${CONFIG.callmebotPhone}&text=${text}&apikey=${encodeURIComponent(CONFIG.callmebotKey)}`,{mode:'no-cors',keepalive:true}).catch(()=>{});
+    }
+  }catch(e){}
+}
 
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isMobile = innerWidth < 760;
@@ -502,6 +528,7 @@ function showAnswer({emoji,title,text,msg,label,fine}){
 document.querySelectorAll('.pill').forEach(p=>p.addEventListener('click',e=>{
   p.classList.add('sel');
   const pick=p.dataset.pick;
+  notifyAniket(p.closest('#sub-trip')?'trip':'date', pick);
   burst(e.clientX||innerWidth/2, e.clientY||innerHeight/2, 30);
   setTimeout(()=>{
     showAnswer({
@@ -516,6 +543,7 @@ document.querySelectorAll('.pill').forEach(p=>p.addEventListener('click',e=>{
   },550);
 }));
 document.getElementById('needTime').addEventListener('click',()=>{
+  notifyAniket('time');
   showAnswer({
     emoji:'🌸',
     title:'Take all the time you need',
