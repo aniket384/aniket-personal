@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1c0a16">
+<title>For Saniya 💌</title>
+<meta property="og:title" content="For Saniya 💌">
+<meta property="og:description" content="Someone has something to tell you…">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💌</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Poppins:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#1c0a16; --plum:#3a1230; --wine:#6b1f45; --rose:#ff6f9f; --blush:#ffc2d6;
+  --petal:#ffe3ec; --gold:#f7c873; --cream:#fff7f2; --ink:#2b1222; --mint:#7ef0b8;
+  --script:'Great Vibes',cursive; --serif:'Cormorant Garamond',serif; --sans:'Poppins',system-ui,sans-serif; --mono:'JetBrains Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans); color:var(--cream); min-height:100vh; overflow-x:hidden;
+  background:
+    radial-gradient(120% 60% at 50% 0%, #5a1840 0%, transparent 60%),
+    radial-gradient(90% 50% at 100% 100%, #4a1236 0%, transparent 60%),
+    linear-gradient(180deg,#1c0a16 0%,#2a0d22 40%,#1c0a16 100%);
+  background-attachment:fixed;
+}
+body.locked{overflow:hidden}
+
+/* ---------- ambient layers ---------- */
+#sky,#petals,#burst{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+#sky{z-index:0} #petals{z-index:1} #burst{z-index:60}
+.star{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.6;animation:twinkle var(--d,3s) ease-in-out infinite var(--dl,0s)}
+@keyframes twinkle{0%,100%{opacity:.15;transform:scale(.8)}50%{opacity:1;transform:scale(1.3)}}
+.float-heart{position:absolute;bottom:-40px;font-size:var(--s,18px);opacity:0;animation:rise var(--t,10s) linear infinite var(--dl,0s);filter:drop-shadow(0 0 6px rgba(255,111,159,.6))}
+@keyframes rise{0%{transform:translate(0,0) rotate(0);opacity:0}10%{opacity:.85}100%{transform:translate(var(--x,30px),-110vh) rotate(var(--r,40deg));opacity:0}}
+.petal{position:absolute;top:-30px;width:var(--s,14px);height:calc(var(--s,14px)*.8);background:linear-gradient(135deg,#ffd1e0,#ff8fb3);border-radius:80% 0 80% 0;opacity:.85;animation:fall var(--t,12s) linear infinite var(--dl,0s)}
+@keyframes fall{0%{transform:translate(0,0) rotate(0)}100%{transform:translate(var(--x,60px),110vh) rotate(var(--r,540deg))}}
+
+main{position:relative;z-index:2}
+section{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:72px 20px;text-align:center;position:relative}
+.wrap{width:100%;max-width:520px;margin:0 auto}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+.script{font-family:var(--script);font-weight:400;line-height:1.05}
+.serif{font-family:var(--serif)}
+.eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);opacity:.9}
+h2.script{font-size:clamp(46px,13vw,72px);color:var(--blush);text-shadow:0 0 24px rgba(255,111,159,.45);margin:.2em 0 .3em}
+p.lead{font-family:var(--serif);font-size:clamp(20px,5.4vw,24px);line-height:1.5;color:#ffe9f0}
+
+/* ---------- envelope gate ---------- */
+#gate{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;
+  background:radial-gradient(80% 60% at 50% 40%,#5a1840 0%,#1c0a16 75%);transition:opacity .9s ease,visibility .9s}
+#gate.gone{opacity:0;visibility:hidden}
+.gate-title{font-family:var(--script);font-size:clamp(44px,12vw,64px);color:var(--blush);text-shadow:0 0 22px rgba(255,111,159,.5)}
+.envelope{position:relative;width:min(78vw,300px);aspect-ratio:3/2;cursor:pointer;animation:bob 3s ease-in-out infinite;perspective:800px}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.env-back{position:absolute;inset:0;background:#f4b6c9;border-radius:8px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+.letter{position:absolute;left:8%;right:8%;top:10%;height:80%;background:var(--cream);border-radius:6px;display:flex;align-items:center;justify-content:center;
+  font-family:var(--script);font-size:clamp(26px,7vw,34px);color:var(--wine);transition:transform 1s cubic-bezier(.2,.8,.2,1) .35s;z-index:1}
+.env-front{position:absolute;inset:0;z-index:2;border-radius:0 0 8px 8px;
+  background:linear-gradient(160deg,#ffd0de,#ffb3c9);clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%)}
+.flap{position:absolute;left:0;right:0;top:0;height:60%;z-index:3;transform-origin:top;transition:transform .7s ease;
+  background:linear-gradient(to bottom,#ff9dbb,#f48aab);clip-path:polygon(0 0,100% 0,50% 100%)}
+.seal{position:absolute;z-index:4;left:50%;top:52%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#ff7aa2,#b3123f);display:grid;place-items:center;font-size:24px;box-shadow:0 4px 12px rgba(0,0,0,.35);transition:opacity .3s}
+.envelope.open .flap{transform:rotateX(180deg);z-index:0}
+.envelope.open .seal{opacity:0}
+.envelope.open .letter{transform:translateY(-62%)}
+.tap-hint{font-size:14px;letter-spacing:.12em;color:var(--blush);opacity:.85;animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+
+/* ---------- hero ---------- */
+.hero-name{font-family:var(--script);font-size:clamp(78px,24vw,132px);line-height:.95;
+  background:linear-gradient(90deg,#ffd6e3,#ff7fa8,#f7c873,#ffd6e3);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:shimmer 6s linear infinite;filter:drop-shadow(0 0 18px rgba(255,111,159,.35))}
+@keyframes shimmer{to{background-position:300% 0}}
+.typed{min-height:3.2em;margin-top:18px}
+.caret{display:inline-block;width:2px;height:1em;background:var(--blush);vertical-align:-3px;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.beat{font-size:46px;display:inline-block;animation:beat 1.2s ease-in-out infinite;margin-top:28px}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.25)}30%{transform:scale(1)}45%{transform:scale(1.18)}}
+.scroll-cue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-size:12px;letter-spacing:.2em;color:var(--blush);opacity:.75;display:flex;flex-direction:column;align-items:center;gap:6px}
+.scroll-cue span{display:block;width:1px;height:34px;background:linear-gradient(var(--blush),transparent);animation:drip 1.8s ease-in-out infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---------- timeline ---------- */
+.timeline{position:relative;text-align:left;margin-top:26px;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:11px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--rose),var(--gold),var(--rose));border-radius:2px}
+.tl-item{position:relative;margin-bottom:30px}
+.tl-item::before{content:"♥";position:absolute;left:-34px;top:-2px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:12px;
+  background:var(--night);border:2px solid var(--rose);color:var(--rose);box-shadow:0 0 14px rgba(255,111,159,.6)}
+.tl-year{font-family:var(--mono);font-size:12px;color:var(--gold);letter-spacing:.1em}
+.tl-title{font-family:var(--serif);font-size:23px;font-weight:600;color:#fff;margin:2px 0 4px}
+.tl-text{font-size:15px;line-height:1.65;color:#f3d6e1}
+
+/* ---------- photos ---------- */
+.polaroids{display:flex;flex-direction:column;align-items:center;gap:34px;margin-top:30px}
+.polaroid{background:#fffaf6;padding:12px 12px 16px;border-radius:4px;width:min(80vw,320px);box-shadow:0 22px 50px rgba(0,0,0,.5);position:relative;
+  transform:rotate(var(--rot,-4deg));animation:sway 6s ease-in-out infinite var(--dl,0s)}
+@keyframes sway{0%,100%{transform:rotate(var(--rot,-4deg)) translateY(0)}50%{transform:rotate(calc(var(--rot,-4deg)*-.4)) translateY(-8px)}}
+.polaroid img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:2px;filter:saturate(1.05) contrast(1.02)}
+.polaroid figcaption{font-family:var(--script);font-size:30px;color:var(--wine);margin-top:8px}
+.tape{position:absolute;top:-12px;left:50%;width:90px;height:26px;transform:translateX(-50%) rotate(-3deg);background:rgba(255,194,214,.75);box-shadow:0 2px 4px rgba(0,0,0,.15)}
+.polaroid .sparkle{position:absolute;font-size:22px;animation:spin 4s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- terminal ---------- */
+.terminal{width:100%;text-align:left;margin-top:26px;border-radius:14px;overflow:hidden;background:#120812;border:1px solid rgba(255,111,159,.25);box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 40px rgba(255,111,159,.12)}
+.term-bar{display:flex;align-items:center;gap:7px;padding:10px 12px;background:#24101f}
+.term-bar i{width:11px;height:11px;border-radius:50%;display:block}
+.term-bar b{font-family:var(--mono);font-weight:400;font-size:11px;color:#c99db3;margin-left:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.term-body{padding:14px 14px 18px;font-family:var(--mono);font-size:12.5px;line-height:1.75;color:#e9d7e1;min-height:330px;white-space:pre-wrap;word-break:break-word}
+.t-prompt{color:var(--rose)} .t-ok{color:var(--mint)} .t-dim{color:#9b7b8c} .t-gold{color:var(--gold)} .t-pink{color:#ff9fc0}
+
+/* ---------- reasons ---------- */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}
+.card{background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.03));border:1px solid rgba(255,194,214,.22);border-radius:18px;padding:18px 12px;
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:transform .4s}
+.card:active{transform:scale(.96)}
+.card .emo{font-size:30px;display:block;margin-bottom:6px;animation:bob 3s ease-in-out infinite var(--dl,0s)}
+.card p{font-size:13.5px;line-height:1.5;color:#ffe6ef}
+.card.wide{grid-column:1/-1}
+
+/* ---------- question ---------- */
+#ask h2.script{font-size:clamp(50px,14vw,80px)}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
+.choice{appearance:none;border:none;cursor:pointer;border-radius:22px;padding:22px 10px 18px;color:var(--ink);font-family:var(--sans);
+  background:linear-gradient(160deg,#fff4f8,#ffd0de);box-shadow:0 14px 34px rgba(255,111,159,.35);transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden}
+.choice:active{transform:scale(.95)}
+.choice .big{font-size:44px;display:block;animation:beat 1.6s ease-in-out infinite}
+.choice strong{display:block;font-family:var(--serif);font-size:24px;margin-top:6px;color:var(--wine)}
+.choice small{display:block;font-size:12px;color:#7a4a60;margin-top:2px}
+.choice.trip{background:linear-gradient(160deg,#fff8ec,#ffd9a8)}
+.choice.trip strong{color:#7a3d12}
+.subopts{display:none;margin-top:22px}
+.subopts.show{display:block;animation:fadeUp .6s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.pill-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.pill{appearance:none;cursor:pointer;border:1.5px solid rgba(255,194,214,.45);background:rgba(255,255,255,.06);color:#fff;border-radius:16px;padding:14px 8px;font-family:var(--sans);font-size:14px;transition:all .25s}
+.pill span{display:block;font-size:26px;margin-bottom:4px}
+.pill:active,.pill.sel{background:var(--rose);border-color:var(--rose);transform:scale(.97)}
+.soft-link{appearance:none;background:none;border:none;color:var(--blush);font-family:var(--sans);font-size:14px;margin-top:28px;opacity:.8;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.back-link{appearance:none;background:none;border:none;color:var(--gold);font-size:13px;margin-top:16px;cursor:pointer;font-family:var(--sans)}
+
+/* ---------- answer ---------- */
+#answer{display:none}
+#answer.show{display:flex}
+.big-heart{font-size:84px;display:inline-block;animation:beat 1s ease-in-out infinite;filter:drop-shadow(0 0 22px rgba(255,111,159,.8))}
+.cta{display:inline-flex;align-items:center;gap:10px;margin-top:26px;padding:16px 26px;border-radius:999px;border:none;text-decoration:none;cursor:pointer;
+  font-family:var(--sans);font-weight:600;font-size:16px;color:#fff;background:linear-gradient(135deg,#ff5f93,#e0346f);box-shadow:0 12px 30px rgba(255,95,147,.5);animation:glow 2s ease-in-out infinite}
+@keyframes glow{0%,100%{box-shadow:0 12px 30px rgba(255,95,147,.45)}50%{box-shadow:0 12px 44px rgba(255,95,147,.85)}}
+.fine{font-size:12.5px;color:#d9b3c4;margin-top:16px;line-height:1.6}
+
+.burst-heart{position:absolute;font-size:var(--s,22px);animation:burst 1.6s cubic-bezier(.15,.8,.3,1) forwards}
+@keyframes burst{0%{transform:translate(0,0) scale(.3);opacity:1}100%{transform:translate(var(--x),var(--y)) scale(1) rotate(var(--r));opacity:0}}
+
+footer{position:relative;z-index:2;text-align:center;padding:30px 20px 46px;font-size:12px;color:#b88aa0}
+footer .script{font-size:30px;color:var(--blush);display:block;margin-bottom:4px}
+
+@media (min-width:760px){
+  .polaroids{flex-direction:row;justify-content:center;gap:40px}
+  .term-body{font-size:13.5px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}
+</style>
+</head>
+<body class="locked">
+
+<div id="sky"></div>
+<div id="petals"></div>
+<div id="burst"></div>
+
+<!-- Envelope gate -->
+<div id="gate" role="dialog" aria-label="A letter for Saniya">
+  <div class="gate-title">For Saniya</div>
+  <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open the letter">
+    <div class="env-back"></div>
+    <div class="letter">hi, cutie ♡</div>
+    <div class="env-front"></div>
+    <div class="flap"></div>
+    <div class="seal">💗</div>
+  </div>
+  <div class="tap-hint">tap the envelope</div>
+</div>
+
+<main>
+  <!-- Hero -->
+  <section id="hero">
+    <div class="wrap">
+      <div class="eyebrow reveal">a little website, made only for you</div>
+      <div class="hero-name reveal" style="margin-top:14px">Saniya</div>
+      <p class="lead typed"><span id="typed"></span><span class="caret"></span></p>
+      <div class="beat">💗</div>
+    </div>
+    <div class="scroll-cue">scroll<span></span></div>
+  </section>
+
+  <!-- Story -->
+  <section id="story">
+    <div class="wrap">
+      <div class="eyebrow reveal">our little story</div>
+      <h2 class="script reveal">Since 2019…</h2>
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <div class="tl-year">2019</div>
+          <div class="tl-title">The day I walked in</div>
+          <p class="tl-text">I joined the coaching institute to learn something new — and ended up noticing <em>you</em> first. Your smile quietly became my favourite part of every class.</p>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-year">2019 → 2025</div>
+          <div class="tl-title">The years in between</div>
+          <p class="tl-text">Life moved, code compiled, we both grew into who we are now. But somewhere in the background, that one feeling kept running like a process I never wanted to kill.</p>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-year">now</div>
+          <div class="tl-title">Talking to you again</div>
+          <p class="tl-text">And now we talk — and every message from you makes my day a little brighter. So I decided it's finally time to stop being quiet about it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photos -->
+  <section id="photos">
+    <div class="wrap" style="max-width:760px">
+      <div class="eyebrow reveal">exhibit A &amp; B</div>
+      <h2 class="script reveal">Simply you</h2>
+      <p class="lead reveal" style="font-size:19px">Two pictures, and I still can't decide which one is prettier.</p>
+      <div class="polaroids">
+        <figure class="polaroid reveal" style="--rot:-5deg">
+          <div class="tape"></div>
+          <img src="saniya-1.jpg" alt="Saniya smiling in a white t-shirt" loading="lazy">
+          <figcaption>that smile 😊</figcaption>
+          <span class="sparkle" style="top:-14px;right:-10px">✨</span>
+        </figure>
+        <figure class="polaroid reveal" style="--rot:4deg;--dl:-3s">
+          <div class="tape"></div>
+          <img src="saniya-2.jpg" alt="Saniya in a green embroidered kurta" loading="lazy">
+          <figcaption>pure grace 💚</figcaption>
+          <span class="sparkle" style="bottom:40px;left:-12px">💫</span>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- DevOps love -->
+  <section id="devops">
+    <div class="wrap">
+      <div class="eyebrow reveal">a DevOps &amp; a developer walk into a chat…</div>
+      <h2 class="script reveal">My pipeline</h2>
+      <div class="terminal reveal">
+        <div class="term-bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><b>aniket@heart: ~/feelings</b></div>
+        <div class="term-body" id="term"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reasons -->
+  <section id="reasons">
+    <div class="wrap">
+      <div class="eyebrow reveal">release notes</div>
+      <h2 class="script reveal">Why you?</h2>
+      <div class="cards">
+        <div class="card reveal"><span class="emo">😊</span><p>Your smile could fix any failing build.</p></div>
+        <div class="card reveal"><span class="emo" style="--dl:-.6s">🌸</span><p>You're cute without even trying — it's honestly unfair.</p></div>
+        <div class="card reveal"><span class="emo" style="--dl:-1.2s">🛠️</span><p>You keep servers up all day, and my mood up all the time.</p></div>
+        <div class="card reveal"><span class="emo" style="--dl:-1.8s">💬</span><p>Talking to you never feels like enough.</p></div>
+        <div class="card wide reveal"><span class="emo" style="--dl:-2.4s">♾️</span><p>Seven years later, the feeling still has 100% uptime.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The question -->
+  <section id="ask">
+    <div class="wrap" id="askWrap">
+      <div class="eyebrow reveal">the only question that matters</div>
+      <h2 class="script reveal">Saniya,</h2>
+      <p class="lead reveal">would you let me take you out?<br>You choose — I'll plan everything else. 💗</p>
+
+      <div class="choices reveal" id="mainChoices">
+        <button class="choice" data-kind="date"><span class="big">☕</span><strong>A Date</strong><small>just us, a cozy evening</small></button>
+        <button class="choice trip" data-kind="trip"><span class="big" style="animation-delay:-.6s">🏔️</span><strong>A Trip</strong><small>a little adventure</small></button>
+      </div>
+
+      <div class="subopts" id="sub-date">
+        <p class="lead" style="font-size:19px">Pick your vibe ☕</p>
+        <div class="pill-grid">
+          <button class="pill" data-pick="a coffee date"><span>☕</span>Coffee &amp; long talks</button>
+          <button class="pill" data-pick="a candlelight dinner"><span>🕯️</span>Candlelight dinner</button>
+          <button class="pill" data-pick="a movie night"><span>🎬</span>Movie night</button>
+          <button class="pill" data-pick="a long drive"><span>🚗</span>Long drive &amp; music</button>
+        </div>
+        <button class="back-link" data-back>← go back</button>
+      </div>
+
+      <div class="subopts" id="sub-trip">
+        <p class="lead" style="font-size:19px">Where shall we go? 🧳</p>
+        <div class="pill-grid">
+          <button class="pill" data-pick="a trip to the mountains"><span>🏔️</span>The mountains</button>
+          <button class="pill" data-pick="a trip to Rishikesh"><span>🌊</span>Rishikesh</button>
+          <button class="pill" data-pick="a trip to Jaipur"><span>🏰</span>Jaipur</button>
+          <button class="pill" data-pick="a surprise trip"><span>🎁</span>Surprise me!</button>
+        </div>
+        <button class="back-link" data-back>← go back</button>
+      </div>
+
+      <button class="soft-link reveal" id="needTime">I need a little time 🌸</button>
+    </div>
+  </section>
+
+  <!-- Answer -->
+  <section id="answer">
+    <div class="wrap">
+      <div class="big-heart" id="ansEmoji">💖</div>
+      <h2 class="script" id="ansTitle">It's a date!</h2>
+      <p class="lead" id="ansText"></p>
+      <a class="cta" id="waBtn" href="#" target="_blank" rel="noopener">💌 <span id="waLabel">Tell Aniket</span></a>
+      <p class="fine" id="ansFine">Tap the button to send me your answer on WhatsApp.</p>
+      <button class="back-link" id="restart" style="margin-top:26px">↺ change my answer</button>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span class="script">with all my heart</span>
+  — Aniket 💗
+</footer>
+
+<script>
+/* ======== Config ======== */
+const CONFIG = {
+  // Aniket's WhatsApp number with country code, digits only (e.g. "919876543210").
+  // Leave empty and WhatsApp will open its contact picker instead.
+  whatsapp: "",
+};
+
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isMobile = innerWidth < 760;
+
+/* ======== Ambient: stars, floating hearts, petals ======== */
+(function ambient(){
+  const sky = document.getElementById('sky');
+  for(let i=0;i<(isMobile?45:80);i++){
+    const s=document.createElement('i'); s.className='star';
+    s.style.left=Math.random()*100+'%'; s.style.top=Math.random()*100+'%';
+    s.style.setProperty('--d',(2+Math.random()*4)+'s'); s.style.setProperty('--dl',(-Math.random()*5)+'s');
+    sky.appendChild(s);
+  }
+  if(reduce) return;
+  const hearts=['💗','💖','💕','❤️','🤍','💞'];
+  for(let i=0;i<(isMobile?12:20);i++){
+    const h=document.createElement('span'); h.className='float-heart';
+    h.textContent=hearts[i%hearts.length];
+    h.style.left=Math.random()*100+'%';
+    h.style.setProperty('--s',(12+Math.random()*18)+'px');
+    h.style.setProperty('--t',(9+Math.random()*10)+'s');
+    h.style.setProperty('--dl',(-Math.random()*18)+'s');
+    h.style.setProperty('--x',(Math.random()*80-40)+'px');
+    h.style.setProperty('--r',(Math.random()*90-45)+'deg');
+    sky.appendChild(h);
+  }
+  const pet=document.getElementById('petals');
+  for(let i=0;i<(isMobile?10:18);i++){
+    const p=document.createElement('i'); p.className='petal';
+    p.style.left=Math.random()*100+'%';
+    p.style.setProperty('--s',(9+Math.random()*10)+'px');
+    p.style.setProperty('--t',(10+Math.random()*10)+'s');
+    p.style.setProperty('--dl',(-Math.random()*20)+'s');
+    p.style.setProperty('--x',(Math.random()*160-80)+'px');
+    p.style.setProperty('--r',(300+Math.random()*400)+'deg');
+    pet.appendChild(p);
+  }
+})();
+
+/* ======== Heart burst ======== */
+function burst(x,y,n=26){
+  if(reduce) return;
+  const layer=document.getElementById('burst');
+  const set=['💖','💗','💕','✨','💞','🌸'];
+  for(let i=0;i<n;i++){
+    const b=document.createElement('span'); b.className='burst-heart';
+    b.textContent=set[i%set.length];
+    const a=Math.random()*Math.PI*2, d=90+Math.random()*170;
+    b.style.left=x+'px'; b.style.top=y+'px';
+    b.style.setProperty('--x',Math.cos(a)*d+'px'); b.style.setProperty('--y',Math.sin(a)*d-60+'px');
+    b.style.setProperty('--r',(Math.random()*120-60)+'deg'); b.style.setProperty('--s',(16+Math.random()*16)+'px');
+    layer.appendChild(b); setTimeout(()=>b.remove(),1700);
+  }
+}
+function rain(){
+  if(reduce) return;
+  for(let k=0;k<5;k++) setTimeout(()=>burst(Math.random()*innerWidth, Math.random()*innerHeight*.6+60, 18), k*260);
+}
+
+/* ======== Envelope gate ======== */
+const env=document.getElementById('envelope'), gate=document.getElementById('gate');
+function openLetter(e){
+  if(env.classList.contains('open')) return;
+  env.classList.add('open');
+  const r=env.getBoundingClientRect(); burst(r.left+r.width/2, r.top+r.height/2, 30);
+  setTimeout(()=>{ gate.classList.add('gone'); document.body.classList.remove('locked'); startTyping(); },1700);
+}
+env.addEventListener('click',openLetter);
+env.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();openLetter();} });
+
+/* ======== Hero typewriter ======== */
+const lines=["There's something I've wanted to tell you since 2019…","…and I couldn't fit it in a text. So I built you a website. 💌"];
+function startTyping(){
+  const el=document.getElementById('typed'); let li=0, ci=0;
+  if(reduce){ el.textContent=lines.join(' '); return; }
+  (function step(){
+    if(li>=lines.length) return;
+    const full=lines[li];
+    if(ci<=full.length){ el.textContent=(li? lines.slice(0,li).join(' ')+' ' : '')+full.slice(0,ci); ci++; setTimeout(step, 42+Math.random()*30); }
+    else { li++; ci=0; setTimeout(step, 700); }
+  })();
+}
+
+/* ======== Scroll reveal ======== */
+const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{threshold:.18});
+document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=(i%4)*.12+'s'; io.observe(el); });
+
+/* ======== Terminal ======== */
+const termScript=[
+  ['<span class="t-prompt">$</span> kubectl get feelings -n aniket',60],
+  ['<span class="t-dim">NAME              STATUS    SINCE</span>',0],
+  ['crush-on-saniya   <span class="t-ok">Running</span>   2019',0],
+  ['',0],
+  ['<span class="t-prompt">$</span> git log --oneline heart',60],
+  ['<span class="t-gold">7f3a2c1</span> first saw her at the institute',0],
+  ['<span class="t-gold">b19e0d4</span> could not stop thinking about her smile',0],
+  ['<span class="t-gold">c0ffee5</span> started talking again 🥹',0],
+  ['<span class="t-gold">HEAD   </span> <span class="t-pink">feat: ask her out</span>',0],
+  ['',0],
+  ['<span class="t-prompt">$</span> ./deploy.sh --target=saniya --env=forever',60],
+  ['<span class="t-ok">✔</span> build passed      <span class="t-dim">(took 7 years)</span>',0],
+  ['<span class="t-ok">✔</span> tests passed      <span class="t-dim">(heart rate: very high)</span>',0],
+  ['<span class="t-ok">✔</span> zero rollbacks planned',0],
+  ['<span class="t-gold">⏳ waiting for approval from: Saniya 💖</span>',0],
+];
+let termDone=false;
+const termEl=document.getElementById('term');
+const termIO=new IntersectionObserver(es=>{ if(es[0].isIntersecting && !termDone){ termDone=true; runTerm(); } },{threshold:.35});
+termIO.observe(termEl);
+function runTerm(){
+  if(reduce){ termEl.innerHTML=termScript.map(l=>l[0]).join('\n'); return; }
+  let i=0;
+  (function next(){
+    if(i>=termScript.length){ termEl.innerHTML+='<span class="caret"></span>'; return; }
+    const [html,typeSpeed]=termScript[i];
+    if(typeSpeed){
+      const tmp=document.createElement('div'); tmp.innerHTML=html; const plain=tmp.textContent;
+      const line=document.createElement('span'); termEl.appendChild(line);
+      let c=0;
+      (function t(){
+        if(c<=plain.length){ line.innerHTML='<span class="t-prompt">$</span>'+plain.slice(1,c).replace(/</g,'&lt;'); c++; setTimeout(t,typeSpeed*.5); }
+        else { line.innerHTML=html; termEl.appendChild(document.createTextNode('\n')); i++; setTimeout(next,380); }
+      })();
+    } else {
+      const line=document.createElement('span'); line.innerHTML=html; termEl.appendChild(line); termEl.appendChild(document.createTextNode('\n'));
+      i++; setTimeout(next,260);
+    }
+  })();
+}
+
+/* ======== The question ======== */
+const main=document.getElementById('mainChoices');
+const subs={date:document.getElementById('sub-date'),trip:document.getElementById('sub-trip')};
+document.querySelectorAll('.choice').forEach(btn=>btn.addEventListener('click',e=>{
+  burst(e.clientX||innerWidth/2, e.clientY||innerHeight/2, 16);
+  main.style.display='none'; document.getElementById('needTime').style.display='none';
+  subs[btn.dataset.kind].classList.add('show');
+}));
+document.querySelectorAll('[data-back]').forEach(b=>b.addEventListener('click',()=>{
+  Object.values(subs).forEach(s=>s.classList.remove('show'));
+  main.style.display=''; document.getElementById('needTime').style.display='';
+}));
+
+function waLink(msg){
+  const t=encodeURIComponent(msg);
+  return CONFIG.whatsapp ? `https://wa.me/${CONFIG.whatsapp}?text=${t}` : `https://wa.me/?text=${t}`;
+}
+function showAnswer({emoji,title,text,msg,label,fine}){
+  document.getElementById('ansEmoji').textContent=emoji;
+  document.getElementById('ansTitle').textContent=title;
+  document.getElementById('ansText').innerHTML=text;
+  document.getElementById('waLabel').textContent=label;
+  document.getElementById('ansFine').textContent=fine;
+  document.getElementById('waBtn').href=waLink(msg);
+  const a=document.getElementById('answer'); a.classList.add('show');
+  document.getElementById('ask').style.display='none';
+  a.scrollIntoView({behavior:reduce?'auto':'smooth'});
+}
+document.querySelectorAll('.pill').forEach(p=>p.addEventListener('click',e=>{
+  p.classList.add('sel');
+  const pick=p.dataset.pick;
+  burst(e.clientX||innerWidth/2, e.clientY||innerHeight/2, 30);
+  setTimeout(()=>{
+    showAnswer({
+      emoji:'💖',
+      title:'Yay!! It’s a yes!',
+      text:`You just made me the happiest guy in Delhi NCR. 🥹<br><br><strong>${pick.charAt(0).toUpperCase()+pick.slice(1)}</strong> it is — I'll take care of every little detail. Just tell me when you're free.`,
+      msg:`Hey Aniket 💖 I opened your website… and my answer is YES! Let's go for ${pick} 😊`,
+      label:'Send my answer to Aniket',
+      fine:'Tap to send it on WhatsApp — I’m waiting with a big smile. 😊'
+    });
+    rain();
+  },550);
+}));
+document.getElementById('needTime').addEventListener('click',()=>{
+  showAnswer({
+    emoji:'🌸',
+    title:'Take all the time you need',
+    text:'No pressure at all, Saniya. Thank you for reading till the end — that alone means a lot to me.<br><br>Whatever you decide, I’m really glad we’re talking. 🤍',
+    msg:'Hey Aniket 🌸 I saw your website — that was really sweet. Give me a little time to think? 😊',
+    label:'Send a little note',
+    fine:'Only if you want to — no rush, ever.'
+  });
+});
+document.getElementById('restart').addEventListener('click',()=>{
+  document.getElementById('answer').classList.remove('show');
+  document.getElementById('ask').style.display='';
+  Object.values(subs).forEach(s=>s.classList.remove('show'));
+  document.querySelectorAll('.pill.sel').forEach(p=>p.classList.remove('sel'));
+  main.style.display=''; document.getElementById('needTime').style.display='';
+  document.getElementById('ask').scrollIntoView({behavior:reduce?'auto':'smooth'});
+});
+</script>
+</body>
+</html>
